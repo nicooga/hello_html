@@ -1,0 +1,39 @@
+if message
+  div= message
+
+if currentUser
+  h1= 'Welcome ' + currentUser.nickname + '!'
+
+  form(action='/logout' method='post')
+    button(type='submit') Logout
+
+else
+  form(action='/login' method='post')
+    div: label Nickname
+    div: input(name='nickname')
+
+    div: label Password
+    div: input(name='password' type='password')
+
+    button(type='submit') Login
+
+  form(action='/register' method='post')
+    div: label Nickname
+    div: input(name='nickname')
+
+    div: label Password
+    div: input(name='password' type='password')
+
+    div: label Confirm Password
+    div: input(name='confirmPassword' type='password')
+
+    button(type='submit') Register
+
+button#asdf Asdf
+
+script.
+  document.getElementById('asdf').addEventListener('click', _ => {
+    fetch('/asdf')
+      .then(resp => resp.json())
+      .then(resp => console.log(resp))
+  })
